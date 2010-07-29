@@ -18,5 +18,4 @@
 
 #include <autovector.h>
 
-void hispeed_isr() interrupt HISPEED_ISR {}
-
+void hispeed_isr() __interrupt HISPEED_ISR {}

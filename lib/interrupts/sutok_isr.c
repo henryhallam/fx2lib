@@ -18,5 +18,4 @@
 
 #include <autovector.h>
 
-void sutok_isr() interrupt SUTOK_ISR {}
-
+void sutok_isr() __interrupt SUTOK_ISR {}

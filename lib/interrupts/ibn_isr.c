@@ -18,5 +18,4 @@
 
 #include <autovector.h>
 
-void ibn_isr() interrupt IBN_ISR {}
-
+void ibn_isr() __interrupt IBN_ISR {}

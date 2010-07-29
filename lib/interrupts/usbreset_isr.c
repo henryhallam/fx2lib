@@ -18,5 +18,4 @@
 
 #include <autovector.h>
 
-void usbreset_isr() interrupt USBRESET_ISR {}
-
+void usbreset_isr() __interrupt USBRESET_ISR {}
