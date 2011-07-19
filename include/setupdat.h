@@ -173,6 +173,8 @@ void handle_hispeed( BOOL highspeed );
 #define DSCR_DEVICE_TYPE 1
 #define DSCR_CONFIG_TYPE 2
 #define DSCR_STRING_TYPE 3
+#define DSCR_INTERFACE_TYPE 4
+#define DSCR_ENDPOINT_TYPE 5
 #define DSCR_DEVQUAL_TYPE 6
 #define DSCR_OTHERSPD_TYPE 7
 
@@ -217,7 +219,9 @@ typedef struct {
     BYTE pstr;
 } STRING_DSCR;
 
-
-
+#define ENDPOINT_TYPE_CONTROL 0
+#define ENDPOINT_TYPE_ISO 1
+#define ENDPOINT_TYPE_BULK 2
+#define ENDPOINT_TYPE_INT 3
 
 #endif
