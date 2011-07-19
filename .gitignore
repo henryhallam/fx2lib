@@ -15,3 +15,5 @@
 *.iic
 docs/html
 build
+
+.*.un~
