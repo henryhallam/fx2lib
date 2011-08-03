@@ -31,7 +31,7 @@
 #include <setupdat.h>
 
 
-extern BOOL handle_vendorcommand(BYTE cmd);
+extern BOOL handle_vendorcommand(BYTE bRequest);
 extern BOOL handle_set_configuration(BYTE cfg);
 extern BOOL handle_get_interface(BYTE ifc, BYTE* alt_ifc);
 extern BOOL handle_set_interface(BYTE ifc,BYTE alt_ifc);
@@ -69,7 +69,16 @@ void handle_get_descriptor();
  handshake
 */
 
+/**
+ * Looks into the SETUPDAT data and dispatches to the callback handlers.
+ *
+ * Note that this code will handshake the packet for all callbacks except
+ * handle_vendorcommand(). This code *used* to handshake those too, but as it
+ * is not required by the specification to do so (for packets with a DATA
+ * segment) it doesn't do it anymore.
+ */
 void handle_setupdata() {
+    BOOL handshake = TRUE;
     //printf ( "Handle setupdat: %02x\n", SETUPDAT[1] );
 
     switch ( SETUPDAT[1] ) {
@@ -121,17 +130,18 @@ void handle_setupdata() {
             }
             break;
         default:
-         if (!handle_vendorcommand(SETUPDAT[1])) {
-            printf ( "Unhandled Vendor Command: %02x\n" , SETUPDAT[1] );
-            STALLEP0();
-         }
-        
-        
+            if (handle_vendorcommand(SETUPDAT[1])) {
+                handshake = FALSE;
+            } else {
+                printf ( "Unhandled Vendor Command: %02x\n" , SETUPDAT[1] );
+                STALLEP0();
+            }
     }
-    
+
     // do the handshake
-    EP0CS |= bmHSNAK;
-    
+    if(handshake) {
+        EP0CS |= bmHSNAK;
+    }
 }
 
 xdata BYTE* ep_addr(BYTE ep) { // bit 8 of ep_num is the direction
