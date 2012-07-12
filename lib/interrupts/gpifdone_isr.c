@@ -18,5 +18,4 @@
 
 #include <autovector.h>
 
-void gpifdone_isr() interrupt GPIFDONE_ISR{}
-
+void gpifdone_isr() __interrupt GPIFDONE_ISR{}

@@ -18,5 +18,4 @@
 
 #include <autovector.h>
 
-void ep8isoerr_isr() interrupt EP8ISOERR_ISR {}
-
+void ep8isoerr_isr() __interrupt EP8ISOERR_ISR {}

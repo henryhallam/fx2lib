@@ -1,3 +1,6 @@
+dev
+ * Fixed compliation warnings from sdcc. -- trygvis@inamo.no
+
 0.2
  * Change I2C routines to return FALSE intead of infinite loop possibility.
  * Addition of fx2load script to load eeprom information.
