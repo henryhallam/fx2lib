@@ -49,7 +49,7 @@ void delay(WORD millis);
  * Figure your own sync delay out if IFCLKSRC=0.
  **/
 
-#define NOP __asm nop __endasm
+#define NOP _asm nop _endasm
 
 /**
  * SYNCDELAY2 can work for the following clock speeds

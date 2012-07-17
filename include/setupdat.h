@@ -141,7 +141,7 @@ typedef enum {
  * returns the control/status register for an end point
  * (bit 7=1 for IN, 0 for out
  **/
-__xdata BYTE* ep_addr(BYTE ep);
+xdata BYTE* ep_addr(BYTE ep);
 
 /*
  You can call this function directly if you are polling
